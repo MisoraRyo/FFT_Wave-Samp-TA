@@ -19,7 +19,7 @@ const gui = new GUI({width:180});
 gui.domElement.id = 'gui';
 gui.close();
 
-// Three.js でテキストを生成するために必要なフォントデータ
+// Three.js でテキストを生成するために必要なフォントデータを読み込む
 const fontLoader = new FontLoader();
 const Ffont  = fontLoader.parse(Typeface);
 
@@ -53,7 +53,7 @@ const player = new Player({
     //mediaBannerPosition:"top", //音源メディアの情報を表示する位置を指定する。座標指定ではない。
 });
 
-//デバック時のみ[0~100]
+//★デバック時のみ[0~100]
 player.volume = 10;
 
 /////////////////////////////////////////
