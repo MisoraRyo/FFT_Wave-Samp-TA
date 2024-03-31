@@ -4,6 +4,8 @@
 
 楽曲のFFTと波形情報をTextAliveと連携させたサンプルサイトです。
 
+実行するには、TextAlive APIのトークンが必要です。
+
 This is a sample site that links the FFT and waveform information of a song to TextAlive.
 
 ## Demo
