@@ -8,6 +8,8 @@
 
 This is a sample site that links the FFT and waveform information of a song to TextAlive.
 
+A TextAlive API token is required to run it.
+
 ## Demo
 
 https://misora.main.jp/ea4azmyb/fftwave/
