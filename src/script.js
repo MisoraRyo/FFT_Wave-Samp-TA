@@ -10,7 +10,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Stats from "three/examples/jsm/libs/stats.module";
 import GUI, { FunctionController } from 'lil-gui';
 import { FontLoader } from 'three/addons/loaders/FontLoader.js';
-import Typeface from '../static/ZenOldMincho_Regular.json';
+import Typeface from '../static/ZenOldMincho_Regular_min.json';
 
 let FFTJson;
 
@@ -39,7 +39,7 @@ const player = new Player({
     // https://developer.textalive.jp/packages/textalive-app-api/interfaces/PlayerOptions.html
     //
     app: { 
-      token: "----",//Token　★★★★★取得したトークンを追加ください！！！★★★★
+      token: "JSnoy0SqfLGJSE9b",//Token　★★★★★取得したトークンを追加ください！！！★★★★
       parameters: [
       ]
     },
@@ -379,18 +379,18 @@ function removeObjectsByName(SC, Name) {
   });
 
   objects.forEach((object) => {
-    //console.log(object);
+
     SC.remove(object);
     //
     if(object.type == 'Group'){
       object.children.forEach((element) => {
         element.geometry.dispose();
-        //element.material.map.dispose();//element.Texture.dispose
+
         element.material.dispose();
       });
     }else{
       object.geometry.dispose();
-      //object.material.map.dispose();
+
       object.material.dispose();
     }
   });
@@ -521,7 +521,6 @@ let FFTArrat = [];
 
 function renderLoop() {
     stats.begin();//STATS計測
-
     //const delta = clock.getDelta();//animation programs
     //const elapsedTime = clock.getElapsedTime();
 
