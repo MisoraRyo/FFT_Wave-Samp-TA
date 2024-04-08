@@ -27,7 +27,7 @@ Run this command in your terminal to open a local server at localhost:8080
 npm run dev
 ```
 
-## 楽曲からJsonデータを作成するサイト
+## Jsonデータを作成する
 
 https://github.com/MisoraRyo/FFT-WAVE-Json_Download-TA-
 
