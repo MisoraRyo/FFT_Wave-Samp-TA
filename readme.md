@@ -4,7 +4,11 @@
 
 楽曲のFFTと波形情報をTextAliveと連携させたサンプルサイトです。
 
+実行するには、TextAlive APIのトークンが必要です。
+
 This is a sample site that links the FFT and waveform information of a song to TextAlive.
+
+A TextAlive API token is required to run it.
 
 楽曲からJsonデータを作成するサイト
 
@@ -29,12 +33,12 @@ npm run dev
 
 ## Song
 
-『初音ミク「マジカルミライ 2024」楽曲コンテスト』の受賞作品6曲
+『初音ミク「マジカルミライ 2023」楽曲コンテスト』の受賞作品6曲
 
-https://magicalmirai.com/2024/procon/
+https://magicalmirai.com/2023/procon/
 
 ## Resource
 
 Three.js
 
-TextAlive App api
+TextAlive.api
