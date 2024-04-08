@@ -10,10 +10,6 @@ This is a sample site that links the FFT and waveform information of a song to T
 
 A TextAlive API token is required to run it.
 
-楽曲からJsonデータを作成するサイト
-
-https://github.com/MisoraRyo/FFT-WAVE-Json_Download-TA-
-
 ## Demo
 
 https://misora.main.jp/ea4azmyb/fftwave/
@@ -30,6 +26,10 @@ Run this command in your terminal to open a local server at localhost:8080
 ```
 npm run dev
 ```
+
+## 楽曲からJsonデータを作成するサイト
+
+https://github.com/MisoraRyo/FFT-WAVE-Json_Download-TA-
 
 ## Song
 
