@@ -41,4 +41,4 @@ https://magicalmirai.com/2024/procon/
 
 Three.js
 
-TextAlive.api
+TextAlive api
