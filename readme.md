@@ -2,7 +2,7 @@
 
 <img src="./static/image.png" width="100%"/>
 
-楽曲のFFTと波形情報をTextAliveと連携させたサンプルサイトです。
+楽曲のFFTと波形情報をTextAliveと連携させるサンプルサイトです。
 
 実行するには、TextAlive APIのトークンが必要です。
 
