@@ -2,7 +2,7 @@
 ///// IMPORT
 import './style.css'
 // Textalive関連
-import Songs from './song.json';
+import Songs from './song.json'; //プロコン用の楽曲データ　★FFT用のjsonを読み込むようにParamを追加しています！
 import { Player } from "textalive-app-api";
 // Three.js関連
 import * as THREE from 'three'
@@ -82,7 +82,7 @@ player.addListener({
 
         //
         // ★FFT・WAVE データの読み込み
-        // Song.jsonに読み込むためのファイルを記載する
+        // Song.jsonに読み込むためのファイルのParamを記載する
         //
 
         fetch( Songs[0].json)
@@ -172,7 +172,6 @@ player.addListener({
         console.log("終了時間 VoiceEndTime:" + voiceEndTime);
         console.log("終了時間 duration:" + endTime);
         console.log("FPS:" + player.fps);
-
 
       }//END if (!player.app.managed)
   
@@ -298,6 +297,7 @@ function valueChange(){
 let element = document.getElementById('select');
 element.addEventListener('change', valueChange);
 
+
 /////////////////////////////////////////////////////////////////////////
 ///// 
 ///// THREE.JS
@@ -366,7 +366,7 @@ axesHelper.visible = true;
 scene.add(axesHelper);
 
 /////////////////////////////////////////////////////////////////////////
-///// OBJECT
+///// OBJECT DELETE
 
 // Sceneにある指定されたidを削除する
 function removeObjectsByName(SC, Name) {
@@ -397,6 +397,8 @@ function removeObjectsByName(SC, Name) {
 
 }// End removeObjectsByName()
 
+/////////////////////////////////////////////////////////////////////////
+///// OBJECT SET
 
 class ObjectText{
   // コンストラクター
@@ -429,10 +431,8 @@ class ObjectText{
 
 }
 
-/////////////////////////////////////////////////////////////////////////
-//// RENDER LOOP FUNCTION
-
 ////////////////////////////////////////////////////////////
+///// FFT OBJECT SET
 
 const boxGroup = new THREE.Group();
 
@@ -458,11 +458,12 @@ scene.add(boxGroup);
 
 
 ////////////////////////////////////////////////////////////
-const boxGroupB = new THREE.Group();
-const boxgeometryB = new THREE.BoxGeometry( 0.2, 0.5, 0.2 );
+///// Wave OBJECT SET
 
-const boxGroupCC = new THREE.Group();
-  
+const boxGroupB = new THREE.Group();
+const boxGroupC = new THREE.Group();
+
+const boxgeometryB = new THREE.BoxGeometry( 0.2, 0.5, 0.2 );
 const materialB = new THREE.MeshBasicMaterial({
     color: 0xee0000,
     transparent: true, 
@@ -476,15 +477,16 @@ for (let i = 0; i < 64; i ++) {
     0,
   )
 
-  boxGroupCC.add( boxmesh );
+  boxGroupC.add( boxmesh );
 }
 
-boxGroupB.add( boxGroupCC );
-
+boxGroupB.add( boxGroupC );
 boxGroupB.position.set(-64, -30, 0);
+
 scene.add(boxGroupB);
 
 ////////////////////////////////////////////////////////////
+///// SEARCH JSON ParamData
 
 function findClosestNumber(Position) {
   // 最初の要素を初期値として設定
@@ -510,7 +512,8 @@ function findClosestNumber(Position) {
   return Result;
 }
 
-////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+//// RENDER LOOP FUNCTION
 
 const clock = new THREE.Clock();
 
@@ -530,19 +533,22 @@ function renderLoop() {
       const position = player.timer.position;
 
       /////////////////////////////////////////////////////////////
-      // ★FFT
+      // ★ FFT&Wave
+
       const FFTArray = findClosestNumber(position); 
 
       if(FFTArray.length != 0){
-        //console.log(FFTArray)
+
         if(FFTArrat["t"] != FFTArray["t"]){
 
           FFTArrat = FFTArray
-
+          
+          // FFT update
           FFTArray["F"].forEach(function(element, index){
             boxGroup.children[index].scale.set(1, 0.01 + element*40, 1);
           });
-
+          
+          // Wave update
           FFTArray["W"].forEach(function(element, index){
             boxGroupB.children[0].children[index].scale.set(1, 0.01 + (element-0.5)*100, 1);
           });
@@ -570,16 +576,18 @@ function renderLoop() {
           //
           const StartTime = Phrase.startTime - position - 100;
           const EndTime = Phrase.endTime - position;
-          //
+          
+          // テキストの生成
           setTimeout(() => {
             const text = new ObjectText(nowPhrase,Phrase);
             text.CreatObject();
           }, StartTime);
 
+          // テキストの削除
           setTimeout(() => {
             removeObjectsByName(scene, "SongText");
           },EndTime);
-          //
+
         }
       }//End if(phrase)
 
