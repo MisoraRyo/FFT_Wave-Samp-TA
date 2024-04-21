@@ -29,7 +29,7 @@ npm run dev
 
 ## Jsonデータを作成する
 
-https://github.com/MisoraRyo/FFT-WAVE-Json_Download-TA-
+[https://github.com/MisoraRyo/FFT-WAVE-Json_Download-TA-](https://github.com/MisoraRyo/FFT_Wave-Json-TA)
 
 ## Song
 
